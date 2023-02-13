@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="nav">
+    <div class="menu">
+      <img
+        src="../../../assets/images/logo.png"
+        height="70px"
+        alt="bloggish logo"
+      />
+      <a href="" routerLink="/home" routerLinkActive="active"> Home </a>
+      <a href="" routerLink="/home/post" routerLinkActive="active"> Post </a>
+      <a href="" routerLink="/home/about" routerLinkActive="active"> About </a>
+    </div>
+    <div class="user" *ngIf="userName; else login">
+      <a href="">{{ userName }}</a>
+      <a href="">My Posts</a>
+      <button (click)="logOut()" id="logout-btn">Log Out</button>
+    </div>
+    <ng-template #login>
+      <button (click)="logOut()" id="login-btn">Login</button>
+    </ng-template>
+  </div>
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer">
+    <p>&copy; 2022 Designed and developed by Rishabh Srivastava</p>
+    <div class="cont-img">
+      <a href="tel:9770733421"><img src="../../../assets/images/mob.png" /></a>
+      <a href="mailto:rishabhsri252@gmail.com"
+        ><img src="../../../assets/images/email.png"
+      /></a>
+      <a href="https://www.linkedin.com/in/rishabh-srivastava-621b33228"><img src="../../../assets/images/linkdin.png" /></a>
+    </div>
+  </div>
+</div>

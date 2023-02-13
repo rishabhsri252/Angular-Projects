@@ -1,0 +1,62 @@
+<div class="login container">
+  <div class="card">
+    <h1 class="card-title">Hello Again!</h1>
+    <small class="card-subtitle">Enter your credentials and get access</small>
+    <form class="card-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <label for="username">Username</label>
+      <div class="card-input-container username form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="e.g Rishabh123"
+          formControlName="username"
+        />
+        <span
+          *ngIf="
+            loginForm.controls['username'].hasError('required') &&
+            (loginForm.controls['username'].dirty ||
+              loginForm.controls['username'].touched)
+          "
+        >
+          <small>Username Required</small>
+        </span>
+        <span *ngIf="loginForm.controls['username'].hasError('pattern')">
+          <small>Alphanumeric characters required [a-z,A-Z,0-9] </small>
+        </span>
+      </div>
+      <label for="password">Password</label>
+      <div class="card-input-container password">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="e.g angular@123"
+          formControlName="password"
+        />
+        <span
+          *ngIf="
+            loginForm.controls['password'].hasError('required') &&
+            (loginForm.controls['password'].dirty ||
+              loginForm.controls['password'].touched)
+          "
+        >
+          <small>Password Required</small>
+        </span>
+        <span *ngIf="loginForm.controls['password'].hasError('minlength')">
+          <small>Minimum 6 characters required</small>
+        </span>
+      </div>
+      <button
+        [disabled]="loginForm.invalid"
+        type="submit"
+        class="btn btn-primary card-button"
+      >
+        Log In
+      </button>
+      <div *ngIf="loginFailed">
+        <small>{{ errorMsg }}</small>
+      </div>
+    </form>
+  </div>
+</div>

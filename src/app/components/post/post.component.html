@@ -1,0 +1,79 @@
+<div class="post container">
+  <div class="card">
+    <h1 class="card-title">Tell your story your way.</h1>
+    <h2 class="card-subtitle">START YOUR BLOG FOR FREE</h2>
+    <br />
+    <form class="card-form" [formGroup]="blogPostForm" (ngSubmit)="onPost()">
+      <div class="card-input-container title form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Enter suitable title"
+          formControlName="title"
+        />
+      </div>
+
+      <div class="card-input-container thumbnail form-group">
+        <label for="thumbnail">Thumbnail</label>
+        <input
+          type="file"
+          class="form-control"
+          id="thumbnail"
+          placeholder="Choose a thumbnail"
+          formControlName="thumbnail"
+        />
+      </div>
+
+      <div class="card-input-container description form-group">
+        <label for="description">Description</label>
+        <br />
+        <textarea
+          class="form-control"
+          cols="80"
+          rows="6"
+          id="description"
+          placeholder="Share your thoughts here"
+          formControlName="description"
+        ></textarea>
+      </div>
+
+      <div class="card-input-container form-group">
+        <div>
+          <label for="category">Category</label>
+          <div class="tooltip">
+            <img
+              src="../../../assets/images/tooltip.png"
+              height="15px"
+              width="15px"
+              alt="tooltip"
+            />
+            <span class="tooltip-text"
+              >Select a category your blog is related to.</span
+            >
+          </div>
+        </div>
+        <select formControlName="category" id="category">
+          <option disabled>Choose a category</option>
+          <option *ngFor="let category of categories" value="{{ category }}">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+
+      <br />
+
+      <button
+        [disabled]="blogPostForm.invalid"
+        type="submit"
+        class="btn btn-primary card-button"
+      >
+        Post
+      </button>
+      <div *ngIf="blogPostForm.invalid">
+        <small>Enter all fields to proceed</small>
+      </div>
+    </form>
+  </div>
+</div>

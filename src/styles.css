@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~css-star-rating/css/star-rating.min.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background: linear-gradient(to bottom, #3d6098, #213159);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "poppins", Arial, Helvetica, sans-serif;
+  min-height:100vh;
+}

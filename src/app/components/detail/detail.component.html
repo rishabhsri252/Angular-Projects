@@ -1,0 +1,58 @@
+<div class="home container">
+    <div class="details">
+      <h1 class="title">{{ selectedBlog.title }}</h1>
+      <p>{{ selectedBlog.description }}</p>
+      <hr />
+      <div class="comments-section">
+        <div class="add-comments">
+          <p>Leave a Comment</p>
+          <textarea
+            #comment
+            name="comment"
+            id="comment"
+            cols="80"
+            rows="3"
+          ></textarea>
+          <br />
+          <button (click)="postComment(comment.value)">Post Comment</button>
+        </div>
+        <div class="comments-container">
+          <div class="comments" *ngFor="let comment of comments">
+            <p>{{ comment.comment }}</p>
+            <div class="comment-details">
+              <span>by - {{ comment.author }}</span>
+              <span>{{ comment.dateOfComment | date : "medium" }}</span>
+              <button
+                (click)="deleteComment(comment.id)"
+                class="delete-button"
+                type="button"
+                *ngIf="userName == comment.author"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="side-info">
+      <img src="{{ selectedBlog.thumbnail }}" alt="{{selectedBlog.title}} thumbnail" />
+      <h1 class="title">{{ selectedBlog.title }}</h1>
+      <hr />
+      <h3>by - {{ selectedBlog.author }}</h3>
+      <p>
+        <span>{{ selectedBlog.creationDate | date : "medium" }}</span>
+      </p>
+  
+      <div class="rating-container">
+        <h3 *ngIf="averageRating; else noRating">Ratings : {{ averageRating }}</h3>
+        <ng-template #noRating><span>No Ratings</span></ng-template>
+        <form [formGroup]="userRatingForm">
+          <star-rating-control
+            (ratingChange)="onRatingChange($event)"
+            formControlName="myRatingControl"
+          ></star-rating-control>
+        </form>
+      </div>
+    </div>
+  </div>  

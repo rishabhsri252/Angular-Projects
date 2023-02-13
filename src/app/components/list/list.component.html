@@ -1,0 +1,64 @@
+<div class="list container">
+  <div class="form">
+    <input
+      [(ngModel)]="searchInput"
+      #searchbox
+      (change)="onChangeSearch()"
+      type="search"
+      name="searchbox"
+      id="searchbox"
+      placeholder="Search by title"
+    />
+    <select (change)="onChangeFilter($event)" #filter>
+      <optgroup>
+        <option disabled selected value="">Filter By</option>
+        <option *ngFor="let category of categories" value="{{ category }}">
+          {{ category }}
+        </option>
+      </optgroup>
+    </select>
+    <button
+      *ngIf="searchInput || blogFilter"
+      type="reset"
+      (click)="reset(searchbox, filter)"
+    >
+      Reset
+    </button>
+  </div>
+  <div class="blog-container">
+    <div class="all-blogs">
+      <div
+        class="blogs"
+        *ngFor="let blog of filteredBlog"
+        (click)="onSelectBlog(blog)"
+      >
+        <div class="blog">
+          <img src="{{ blog.thumbnail }}" alt="{{ blog.title }}" />
+          <h2>{{ blog.title }}</h2>
+          <p>{{ blog.description }}</p>
+          <br />
+          <button type="button">Read More</button>
+          <h4>{{ blog.creationDate | date : "mediumDate" }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="featured">
+      <h2>FEATURED BLOGS -</h2>
+      <div
+        class="blogs"
+        *ngFor="let blog of featuredBlog"
+        (click)="onSelectBlog(blog)"
+      >
+        <div class="blog">
+          <img src="{{ blog.thumbnail }}" alt="{{ blog.title }}" />
+          <h2>{{ blog.title }}</h2>
+          <p>{{ blog.description }}</p>
+          <br />
+          <button type="button">Read More</button>
+          <h4>{{ blog.creationDate | date : "mediumDate" }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

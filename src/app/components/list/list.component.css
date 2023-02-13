@@ -1,0 +1,106 @@
+input,
+select {
+  font-family: "poppins", Arial, Helvetica, sans-serif;
+  padding: 10px;
+  margin: 4px;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #3d6098;
+  background: #e7e7e7;
+  border: none;
+}
+
+option {
+  font-family: "poppins", Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: #3d6098;
+}
+
+.active {
+  color: green;
+}
+
+img {
+  width: 220px;
+  height: 150px;
+}
+
+p {
+  font-size: 12px;
+  line-height: 1.2em;
+  height: 2.4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 220px;
+}
+
+h4 {
+  font-size: 8px;
+  text-align: right;
+  padding-right: 4px;
+}
+
+button {
+  color: #f1f1f1;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background-image: linear-gradient(30deg, #3d6098, #44a7fd);
+}
+
+.blog-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 10px 30px;
+}
+
+.blog {
+  text-align: center;
+  margin: 8px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+
+.featured,
+.all-blogs {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.all-blogs {
+  flex-basis: 75%;
+}
+
+.featured {
+  padding: 20px;
+  background: #fff;
+  flex-basis: 0%;
+  border-radius: 5px 5px 15px 15px;
+}
+
+.blog:hover,
+button:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form button {
+  background: none;
+  color: #f04b4c;
+  font-weight: bolder;
+}
+
+@media screen and (max-height: 450px) {
+  .form {
+    flex-direction: column;
+  }
+}
